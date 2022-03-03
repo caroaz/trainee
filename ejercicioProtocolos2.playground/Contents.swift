@@ -24,13 +24,14 @@ import UIKit
 
 
 protocol Motor {
-    var turn:Bool {get set}
+    var turn: Bool {get set}
     var speed: Int {get set}
     mutating func turnOn ()
 }
 
 class Machine{
     var id : Car
+    var id2 : Car2? = nil
     
     var limitSpeed = 60
     
@@ -45,11 +46,18 @@ class Machine{
     }
     
 
-    init (id: Car, turn:Bool) {
+    init (id: Car, turn:Bool, id2:Car2? = nil) {
         self.id = id
         self.turn = turn
+        self.id2 = id2
         
     }
+    
+    func limiteExceed2() {
+        if let  {
+            
+        }
+}
     
     func limiteExceed() {
         if id.speed <= limitSpeed {
@@ -88,13 +96,27 @@ struct Car: Motor{
     }
     
 }
-
+struct Car2: Motor{
+    var name = "car2"
+    var turn: Bool
+    var speed: Int
+    
+    mutating func turnOn()  {
+        if turn == true {
+            print("el motor esta encendido")
+            
+        }else{
+            print("el motor esta apagado")
+            
+   
 
 var car = Car(turn: false, speed: 40)
 car.turnOn()
+var car2 = Car2(turn: false, speed: 0)
+car2.turnOn()
 
  
-var machine = Machine (id: car, turn: false)
+var machine = Machine (id: car, turn: false, id2:car2)
 print(machine.id)
 machine.tellIfItOn()
 machine.limiteExceed()
