@@ -100,3 +100,7 @@ machine.tellIfItOn()
 machine.limiteExceed()
 print(machine.turn)
 
+//
+//
+
+//
