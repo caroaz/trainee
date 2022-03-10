@@ -1,4 +1,6 @@
 import UIKit
+import XCTest
+
 
 //"Machine"
 //
@@ -33,10 +35,10 @@ class Machine{
     var id : Car
     var id2 : Car?
     
-    var limitSpeed = 60
+    private var limitSpeed = 60
 
     
-    var turn: Bool{
+    private var turn: Bool{
         get { return id.turn}
         set { false }
     }
@@ -100,22 +102,7 @@ struct Car: Motor{
     }
     
 }
-//struct Car2: Motor{
-//    var name = "car2"
-//    var turn: Bool
-//    var speed: Int
-//
-//    mutating func turnOn()  {
-//        if turn == true {
-//            print("el motor esta encendido")
-//
-//        }else{
-//            print("el motor esta apagado")
-//
-//        }
-//    }
-//}
-//
+
 
 var car = Car(turn: false, speed: 40)
 //car.turnOn()
@@ -123,7 +110,7 @@ var car2 = Car(turn: true, speed:120)
 car2.turnOn()
 
  
-var machine = Machine (id: car, turn: false, id2: nil)
+var machine = Machine (id: car, turn: false, id2: car2)
 print(machine.id)
 print(machine.id2)
 machine.ifExist()
@@ -132,3 +119,6 @@ machine.ifExist()
 machine.limiteExceed2()
 //print(machine.turn)
 
+class MachineTest: XCTestCase {
+    
+}
