@@ -9,6 +9,7 @@ case air
 typealias EncageAnimal = Encage & Animal
 typealias EntankeAnimal = Entanke & Animal
 
+
 protocol Animal{
     var type : AnimalType {get}
 }
@@ -71,7 +72,7 @@ struct LandAnimal: Feed, EncageAnimal, WalkOut {
     
 
     func takeForAWalk() {
-        print("a pasear")
+            print("salio a pasear")
     }
 
     
@@ -110,6 +111,7 @@ struct SeaAnimal: Feed, Entanke {
 // instancias animales:
 var parrot1 = FlyingAnimal( type: AnimalType.air, name: "pajarito", enjaulable: true, itsFeed: true)
 //parrot1.toFeed()
+var dog1 = LandAnimal(type: AnimalType.land, name: "dog 1", enjaulable: true, itsFeed: true)
 var cat1 = LandAnimal(type: AnimalType.land, name: "cat1", enjaulable: true, itsFeed: false)
 //cat1.toFeed()
 var goldfish1 = SeaAnimal(type: "goldfish", inTanke: true, itsFeed: false)
@@ -125,6 +127,7 @@ var pulpo = SeaAnimal(type: "pulpo", inTanke: true, itsFeed: false)
 class Cage: Clean, WalkOut {
     var occupant : [EncageAnimal] = []
     var itsClean: Bool
+    
 
     init(itsclean: Bool){
         self.itsClean = itsclean
@@ -150,12 +153,15 @@ class Cage: Clean, WalkOut {
         }
         return nil
     }
+
     
     
     func takeForAWalk() {
         for animal in occupant where animal.type == .land {
             setFree()
+    
         }
+        
     }
     
 }
@@ -188,42 +194,42 @@ struct TankSeaAnimals: Clean{
 }
 
 // instancias de la jaula/el tanque:
-//var cage1 = Cage( itsclean: true)
-//cage1.push(parrot1)
-//cage1.push(cat1)
+var cage1 = Cage( itsclean: true)
+cage1.push(parrot1)
+cage1.push(cat1)
+cage1.push(dog1)
+
+print("Hay \(cage1.occupant.count) animales en esta jaula.")
+//print(cage1.occupant)
 //
-//print("Hay \(cage1.occupant.count) animales en esta jaula.")
+cat1.takeForAWalk()
+cage1.takeForAWalk()
+
+print("Hay \(cage1.occupant.count) animales en esta jaula.")
 //print(cage1.occupant)
 //
 //cage1.takeForAWalk()
-//
-//print("Hay \(cage1.occupant.count) animales en esta jaula.")
-//print(cage1.occupant)
-//
-//cage1.takeForAWalk()
+
+//print(cage1.takeForAWalk())
+//print(cat1.takeForAWalk())
 //
 //print("Hay \(cage1.occupant.count) animales en esta jaula.")
 //print(cage1.occupant)
 //cage1.setFree()
 //print("Hay \(cage1.occupant.count) animales en esta jaula.")
-//
+
 
 //instacia tanque
-
-var tank1 = TankSeaAnimals(itsClean: true)
-
-
-tank1.push(goldfish1)
-
-print("Hay \(tank1.occupant.count) peces en este tanque.")
-
-
-//class PetShop {
-//    var jaulas : [Cage] = []
-//    var tanques: [TankSeaAnimals] = []
 //
-//    func (_ name: Cage){
-//        occupant.append(name)
-//    }
+//var tank1 = TankSeaAnimals(itsClean: true)
 //
-//}
+//
+//tank1.push(goldfish1)
+//
+//print("Hay \(tank1.occupant.count) peces en este tanque.")
+//
+//print(cat1)
+class PetShop {
+    
+
+}
