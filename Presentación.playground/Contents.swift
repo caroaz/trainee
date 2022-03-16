@@ -124,7 +124,7 @@ func myFunction() {
  clases: podemos heredar solo usando clases, podemos tener una referencia de una clase almacenada eb varias propiedades
  en las class, se debe tener un inicializador (init)
  
- las clases son de tipo Referencia . cada b¡variable apunta a la misma referencia en memoria 
+ las clases son de tipo Referencia . cada b¡variable apunta a la misma referencia en memoria
  
  */
 class SomeClass{
